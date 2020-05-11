@@ -98,11 +98,7 @@ public class AlertAdaptorClassic extends ArrayAdapter<NotificationModel> impleme
                 stockService.SelectedItem = null;
                 String val = notificationId.getText().toString();
                 int value = Integer.valueOf(val);
-                for (NotificationModel notification: stockService.Notifications) {
-                    if(notification.notificationId == value){
-                        stockService.SelectedItem = notification;
-                    }
-                }
+                stockService.SelectNotificationById(value);
 
                 moreLayout = (LinearLayout) view.findViewById(R.id.moreLayout);
                 moreLayout.setVisibility(moreLayout.getVisibility() == View.GONE ? View.VISIBLE : View.GONE );

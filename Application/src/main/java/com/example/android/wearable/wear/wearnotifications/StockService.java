@@ -13,4 +13,17 @@ public class StockService {
     public Boolean updateNotifications(ArrayList<NotificationModel> newNotifications){
         return true;
     }
+
+    public NotificationModel GetNotificationById(int notificationId) {
+        for (NotificationModel notification: Notifications) {
+            if(notification.notificationId == notificationId){
+                return notification;
+            }
+        }
+        return null;
+    }
+
+    public void SelectNotificationById(int notificationId) {
+        SelectedItem = GetNotificationById(notificationId);
+    }
 }

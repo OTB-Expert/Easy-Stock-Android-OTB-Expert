@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity
         AdapterView.OnItemSelectedListener
         , AdapterView.OnItemClickListener
 {
+    DbHelper db = null;
 
     RecyclerView recyclerView;
     ListView listView;
@@ -114,10 +115,15 @@ public class MainActivity extends AppCompatActivity
     private TextView mNotificationDetailsTextView;
     private StockService stockService;
 
+    /* Don't create notifications when app is open. */
+    boolean AppIsOpen = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
+        AppIsOpen = true;
+        db = new DbHelper(this);
 
         tts=new TextToSpeech(MainActivity.this, new TextToSpeech.OnInitListener() {
 
@@ -140,6 +146,7 @@ public class MainActivity extends AppCompatActivity
         });
 
         stockService = new StockService();
+        stockService.Notifications = db.getAllItems();
         setContentView(R.layout.activity_main);
 
         mMainRelativeLayout = (RelativeLayout) findViewById(R.id.mainRelativeLayout);
@@ -246,7 +253,9 @@ public class MainActivity extends AppCompatActivity
                     int after = stockService.Notifications.size();
                     for(int i = 0; i < after - lastCount; i++){
                         NotificationModel item = stockService.Notifications.get(i);
-                        generateBigPictureStyleNotification(item.headline, "You might want to invest £350 for a potential profit of £10 in 35 minutes. Type the amount you want to invest in your response or go to alerts list and chose an investment plan.", "Buy at: £ "+ item.triggerPrice);
+                        if(!AppIsOpen) {
+                            generateBigPictureStyleNotification(item.headline, "You might want to invest £350 for a potential profit of £10 in 35 minutes. Type the amount you want to invest in your response or go to alerts list and chose an investment plan.", "Buy at: £ " + item.triggerPrice);
+                        }
                         // adapter.notify();
                         tts.speak(item.headline + ". Buy at " + item.triggerPrice, TextToSpeech.QUEUE_ADD, null);
                         // adapter.notifyItemInserted(0);
@@ -266,11 +275,23 @@ public class MainActivity extends AppCompatActivity
 
 
     @Override
+    protected void onDestroy() {
+        db.upsertAllItems(stockService.Notifications);
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Stop showing notifications
+        AppIsOpen = true;
+    }
+
+    @Override
     protected void onPause() {
-        // TODO Auto-generated method stub
-
+        AppIsOpen = false;
+        db.upsertAllItems(stockService.Notifications);
         if(tts != null){
-
             tts.stop();
             tts.shutdown();
         }

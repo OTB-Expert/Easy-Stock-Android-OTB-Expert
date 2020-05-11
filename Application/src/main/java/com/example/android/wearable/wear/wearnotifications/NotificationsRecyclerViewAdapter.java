@@ -25,7 +25,7 @@ public class NotificationsRecyclerViewAdapter extends RecyclerView.Adapter<Notif
         this.mData = data;
         NotificationModel model = new NotificationModel();
         model.headline = "test";
-        this.mData.add(model);
+        // this.mData.add(model);
     }
 
     // inflates the row layout from xml when needed

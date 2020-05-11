@@ -23,11 +23,15 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class AsyncHttpRequestTask extends AsyncTask<String, String, String> {
 
     String ServiceBaseUrl = "https://otb.expert/api/notification/demo/";
+    Boolean UseMockedData = true;
+    Random random = new Random();
 
     StockService stockService = null;
     AlertAdaptorClassic listViewAdapter = null;
@@ -69,6 +73,33 @@ public class AsyncHttpRequestTask extends AsyncTask<String, String, String> {
      */
     protected void onPostExecute(String responseString) {
         super.onPostExecute(responseString);
+
+        if(UseMockedData) {
+            if (stockService != null) {
+                if(stockService.Notifications.size() < 20) {
+                    NotificationModel notification = new NotificationModel();
+                    random.setSeed(System.currentTimeMillis());
+                    notification.notificationId = random.nextInt();
+                    notification.headline = "This item changed " + String.format("%.2f", (random.nextFloat() * 10 - 5)) + "%";
+                    notification.triggerPrice = random.nextFloat() * 100 - 50;
+                    notification.message = "You might want to invest now!";
+                    notification.state = AlertState.Created.ordinal();
+                    notification.datetime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+                    stockService.Notifications.add(0, notification);
+                    listViewAdapter.notifyDataSetChanged();
+                    if (recyclerViewAdapter != null) {
+                        recyclerViewAdapter.notifyDataSetChanged();
+                    }
+                    if (notification.notificationId > LastId) {
+                        LastId = notification.notificationId;
+                    }
+                }
+                return;
+            }
+        }
+
+        // Real API response processing
+
         JSONArray j;
         Type listType = new TypeToken<ArrayList<NotificationModel>>() {
         }.getType();
@@ -96,6 +127,12 @@ public class AsyncHttpRequestTask extends AsyncTask<String, String, String> {
     }
 
     private String GetNotificationUpdates() {
+        if(UseMockedData) {
+            return null;
+        }
+
+        // Real API request
+
         String lastError = "";
         URL url = null;
         String responseString = "";
@@ -116,6 +153,29 @@ public class AsyncHttpRequestTask extends AsyncTask<String, String, String> {
     }
 
     private String Invest(NotificationModel model) {
+        if(UseMockedData) {
+            if(stockService != null) {
+                NotificationModel notification = stockService.GetNotificationById(model.notificationId);
+
+                // On request arriving on server
+                random.setSeed(System.currentTimeMillis());
+                notification.state = AlertState.AcceptedRequested.ordinal();
+                notification.acceptedRequestedPrice = notification.AcceptedRequestedPrice + (random.nextFloat() * notification.AcceptedRequestedPrice / 10 - notification.AcceptedRequestedPrice / 10 / 2);
+                notification.acceptedRequestedValue = notification.AcceptedRequestedValue + (random.nextFloat() * notification.AcceptedRequestedValue / 10 - notification.AcceptedRequestedValue / 10 / 2);
+                notification.acceptedRequestedTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+                // On request honored (delay it random to look real)
+                notification.state = AlertState.Accepted.ordinal();
+                notification.acceptedCompletedPrice = notification.acceptedRequestedPrice + (random.nextFloat() * notification.acceptedRequestedPrice / 10 - notification.acceptedRequestedPrice / 10 / 2);
+                notification.acceptedCompletedValue = notification.acceptedRequestedValue + (random.nextFloat() * notification.acceptedRequestedValue / 10 - notification.acceptedRequestedValue / 10 / 2);
+                notification.acceptedCompletedTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+                return null;
+            }
+        }
+
+        // Real API request
+
         String lastError = "";
         URL url = null;
         String responseString = "";
@@ -136,9 +196,6 @@ public class AsyncHttpRequestTask extends AsyncTask<String, String, String> {
             {
                 j = new JSONObject(responseString);
                 NotificationModel item = gson.fromJson(j.toString(), listType);
-                if(stockService != null) {
-
-                }
             }
             catch(Exception e)
             {
@@ -153,6 +210,29 @@ public class AsyncHttpRequestTask extends AsyncTask<String, String, String> {
     }
 
     private String Sell(NotificationModel model) {
+        if(UseMockedData) {
+            if(stockService != null) {
+                NotificationModel notification = stockService.GetNotificationById(model.notificationId);
+
+                // On request arriving on server
+                random.setSeed(System.currentTimeMillis());
+                notification.state = AlertState.SellRequest.ordinal();
+                notification.sellRequestPrice = notification.SellRequestPrice + (random.nextFloat() * notification.SellRequestPrice / 10 - notification.SellRequestPrice / 10 / 2);
+                notification.sellRequestValue = notification.SellRequestValue + (random.nextFloat() * notification.SellRequestValue / 10 - notification.SellRequestValue / 10 / 2);
+                notification.sellRequestTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+                // On request honored (delay it random to look real)
+                notification.state = AlertState.Sold.ordinal();
+                notification.sellCompletedPrice = notification.sellRequestPrice + (random.nextFloat() * notification.sellRequestPrice / 10 - notification.sellRequestPrice / 10 / 2);
+                notification.sellCompletedValue = notification.sellRequestValue + (random.nextFloat() * notification.sellRequestValue / 10 - notification.sellRequestValue / 10 / 2);
+                notification.sellComplededTime = TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis());
+
+                return null;
+            }
+        }
+
+        // Real API request
+
         String lastError = "";
         URL url = null;
         String responseString = "";
