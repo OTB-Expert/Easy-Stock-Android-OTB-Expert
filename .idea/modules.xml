@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Application/Application.iml" filepath="$PROJECT_DIR$/Application/Application.iml" group="Notifications/Application" />
+      <module fileurl="file://$PROJECT_DIR$/Notifications.iml" filepath="$PROJECT_DIR$/Notifications.iml" group="Notifications" />
+      <module fileurl="file://$PROJECT_DIR$/Shared/Shared.iml" filepath="$PROJECT_DIR$/Shared/Shared.iml" group="Notifications/Shared" />
+      <module fileurl="file://$PROJECT_DIR$/Wearable/Wearable.iml" filepath="$PROJECT_DIR$/Wearable/Wearable.iml" group="Notifications/Wearable" />
+    </modules>
+  </component>
+</project>

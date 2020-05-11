@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\PRO\\Cezar\\Notifications\\Wearable\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-round-v23\\values-round-v23.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Profimedica\\.gradle\\caches\\transforms-2\\files-2.1\\e8211622a858cb63b1c6a273b6582b44\\wear-1.0.0\\res\\values-round-v23\\values-round-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,118,204",
+                        "endColumns": "62,85,79",
+                        "endOffsets": "113,199,279"
+                    },
+                    "to": {
+                        "startLines": "8,16,17",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "474,1032,1118",
+                        "endColumns": "62,85,79",
+                        "endOffsets": "532,1113,1193"
+                    }
+                },
+                {
+                    "source": "C:\\PRO\\Cezar\\Notifications\\Wearable\\src\\main\\res\\values-round\\strings.xml",
+                    "from": {
+                        "startLines": "17",
+                        "startColumns": "4",
+                        "startOffsets": "668",
+                        "endColumns": "66",
+                        "endOffsets": "730"
+                    },
+                    "to": {
+                        "startLines": "18",
+                        "startColumns": "4",
+                        "startOffsets": "1198",
+                        "endColumns": "66",
+                        "endOffsets": "1260"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Profimedica\\.gradle\\caches\\transforms-2\\files-2.1\\1840e60579036c18d7016b20726000a9\\jetified-wearable-2.6.0\\res\\values-round-v23\\values.xml",
+                    "from": {
+                        "startLines": "4,5,9,10,11,12,13,14",
+                        "startColumns": "0,0,0,0,0,0,0,0",
+                        "startOffsets": "213,269,531,608,689,733,804,877",
+                        "endColumns": "55,56,76,80,43,70,72,70",
+                        "endOffsets": "268,325,607,688,732,803,876,947"
+                    },
+                    "to": {
+                        "startLines": "2,3,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,115,537,618,703,751,826,903",
+                        "endColumns": "59,60,80,84,47,74,76,74",
+                        "endOffsets": "110,171,613,698,746,821,898,973"
+                    }
+                },
+                {
+                    "source": "C:\\PRO\\Cezar\\Notifications\\Wearable\\src\\main\\res\\values-round\\dimens.xml",
+                    "from": {
+                        "startLines": "20,22,21,19,17",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "796,947,872,723,668",
+                        "endColumns": "75,73,74,72,53",
+                        "endOffsets": "867,1016,942,791,717"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,15",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "176,252,326,401,978",
+                        "endColumns": "75,73,74,72,53",
+                        "endOffsets": "247,321,396,469,1027"
+                    }
+                }
+            ]
+        }
+    ]
+}

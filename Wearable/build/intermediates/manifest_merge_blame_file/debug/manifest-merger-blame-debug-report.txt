@@ -1,0 +1,171 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3  ~ Copyright 2016 Google Inc.
+4  ~
+5  ~ Licensed under the Apache License, Version 2.0 (the "License");
+6  ~ you may not use this file except in compliance with the License.
+7  ~ You may obtain a copy of the License at
+8  ~
+9  ~      http://www.apache.org/licenses/LICENSE-2.0
+10  ~
+11  ~ Unless required by applicable law or agreed to in writing, software
+12  ~ distributed under the License is distributed on an "AS IS" BASIS,
+13  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14  ~ See the License for the specific language governing permissions and
+15  ~ limitations under the License.
+16-->
+17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+18    package="com.example.android.wearable.wear.wearnotifications"
+19    android:versionCode="1"
+20    android:versionName="1.0" >
+21
+22    <uses-sdk
+23        android:minSdkVersion="23"
+23-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml
+24        android:targetSdkVersion="29" />
+24-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml
+25
+26    <uses-feature android:name="android.hardware.type.watch" />
+26-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:22:5-63
+26-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:22:19-61
+27    <!-- Required for Always-on. -->
+28    <uses-permission android:name="android.permission.WAKE_LOCK" />
+28-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:24:5-68
+28-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:24:22-65
+29    <uses-permission android:name="android.permission.INTERNET" />
+29-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:25:5-67
+29-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:25:22-64
+30
+31    <application
+31-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:28:5-96:19
+32        android:allowBackup="true"
+32-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:28:18-44
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.1.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\34b4ab0d8b65ac74ddd00d45b26dd963\core-1.1.0\AndroidManifest.xml:24:18-86
+34        android:debuggable="true"
+35        android:extractNativeLibs="false"
+36        android:icon="@mipmap/ic_launcher"
+36-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:29:18-52
+37        android:label="@string/app_name"
+37-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:30:18-50
+38        android:supportsRtl="true"
+38-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:31:18-44
+39        android:theme="@style/Theme.AppCompat" >
+39-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:32:18-56
+40
+41        <!-- Let's Play Store know this app is standalone. -->
+42        <meta-data
+42-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:35:9-96
+43            android:name="com.google.android.wearable.standalone"
+43-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:35:20-73
+44            android:value="true" />
+44-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:35:74-94
+45
+46        <!--
+47        Important Note: Usually, you will want to disable bridging if you have a local/native
+48        Wear app creating Notifications. In our case, we don't, as our sample shows both
+49        Notifications launched from a Phone app (that needed to be bridged) and a Wear app.
+50
+51        To disable, create a meta-data tag here:
+52
+53        meta-data
+54            name: com.google.android.wearable.notificationBridgeMode
+55            value: NO_BRIDGING
+56        -->
+57
+58
+59        <!-- If you want your app to run on pre-22, then set required to false -->
+60        <uses-library
+60-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:50:9-93
+61            android:name="com.google.android.wearable"
+61-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:50:23-65
+62            android:required="false" />
+62-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:50:66-90
+63
+64        <activity
+64-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:52:9-58:20
+65            android:name="com.example.android.wearable.wear.wearnotifications.StandaloneMainActivity"
+65-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:52:19-57
+66            android:label="@string/app_name" >
+66-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:53:19-51
+67            <intent-filter>
+67-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:54:13-57:29
+68                <action android:name="android.intent.action.MAIN" />
+68-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:55:17-69
+68-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:55:25-66
+69
+70                <category android:name="android.intent.category.LAUNCHER" />
+70-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:56:17-77
+70-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:56:27-74
+71            </intent-filter>
+72        </activity>
+73        <activity
+73-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:61:9-65:20
+74            android:name="com.example.android.wearable.wear.wearnotifications.handlers.BigTextMainActivity"
+74-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:62:13-57
+75            android:label="@string/title_activity_big_text_main"
+75-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:63:13-65
+76            android:taskAffinity="" >
+76-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:64:13-36
+77        </activity>
+78        <activity
+78-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:67:9-71:20
+79            android:name="com.example.android.wearable.wear.wearnotifications.handlers.BigPictureSocialMainActivity"
+79-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:68:13-66
+80            android:label="@string/title_activity_big_picture_main"
+80-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:69:13-68
+81            android:taskAffinity="" >
+81-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:70:13-36
+82        </activity>
+83        <activity
+83-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:74:9-78:20
+84            android:name="com.example.android.wearable.wear.wearnotifications.handlers.InboxMainActivity"
+84-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:75:13-55
+85            android:label="@string/title_activity_inbox_main"
+85-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:76:13-62
+86            android:taskAffinity="" >
+86-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:77:13-36
+87        </activity>
+88        <activity
+88-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:80:9-84:20
+89            android:name="com.example.android.wearable.wear.wearnotifications.handlers.MessagingMainActivity"
+89-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:81:13-59
+90            android:label="@string/title_activity_messaging_main"
+90-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:82:13-66
+91            android:taskAffinity="" >
+91-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:83:13-36
+92        </activity>
+93
+94        <service
+94-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:86:9-89:19
+95            android:name="com.example.android.wearable.wear.wearnotifications.handlers.BigTextIntentService"
+95-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:87:13-58
+96            android:exported="false" >
+96-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:88:13-37
+97        </service>
+98        <service
+98-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:91:9-94:19
+99            android:name="com.example.android.wearable.wear.wearnotifications.handlers.MessagingIntentService"
+99-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:92:13-60
+100            android:exported="false" >
+100-->C:\PRO\Cezar\Notifications\Wearable\src\main\AndroidManifest.xml:93:13-37
+101        </service>
+102
+103        <activity
+103-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\d810550874c071a7f5afc391a91fdc61\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+104            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+104-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\d810550874c071a7f5afc391a91fdc61\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+105            android:exported="false"
+105-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\d810550874c071a7f5afc391a91fdc61\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+106            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+106-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\d810550874c071a7f5afc391a91fdc61\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+107
+108        <meta-data
+108-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\5feaec8abf5f0f657ccb7d51c61164e6\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+109            android:name="com.google.android.gms.version"
+109-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\5feaec8abf5f0f657ccb7d51c61164e6\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+110            android:value="@integer/google_play_services_version" />
+110-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\Profimedica\.gradle\caches\transforms-2\files-2.1\5feaec8abf5f0f657ccb7d51c61164e6\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+111    </application>
+112
+113</manifest>
